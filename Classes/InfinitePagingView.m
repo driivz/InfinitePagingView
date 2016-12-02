@@ -198,9 +198,14 @@
     }
 }
 
-- (NSInteger)currentPageTag {
-    UIView *view = _pageViews[0];
-    return view.tag;
+- (NSInteger)pageTagAtLocation:(CGPoint)location {
+    CGPoint point = [_innerScrollView convertPoint:location fromView:self];
+    for (UIView *page in _pageViews) {
+        if (CGRectContainsPoint(page.frame, point)) {
+            return page.tag;
+        }
+    }
+    return nil;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

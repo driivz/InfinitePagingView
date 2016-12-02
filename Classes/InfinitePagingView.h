@@ -105,6 +105,6 @@ typedef enum {
  @method pageTagAtLocation:
  @param CGPoint location
  */
-- (NSInteger)currentPageTag;
+- (NSInteger)pageTagAtLocation:(CGPoint)location;
 
 @end
