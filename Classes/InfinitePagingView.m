@@ -94,6 +94,7 @@
     if (nil == _pageViews) {
         _pageViews = [NSMutableArray array];
     }
+    pageView.tag = _pageViews.count;
     [_pageViews addObject:pageView];
     [self layoutPages];
 }
@@ -195,6 +196,11 @@
     if (nil != delegate && [delegate respondsToSelector:@selector(pagingView:willBeginDecelerating:)]) {
         [delegate pagingView:self willBeginDecelerating:_innerScrollView];
     }
+}
+
+- (NSInteger)currentPageTag {
+    UIView *view = _pageViews[0];
+    return view.tag;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

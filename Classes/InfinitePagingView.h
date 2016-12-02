@@ -100,4 +100,11 @@ typedef enum {
  */
 - (void)scrollToNextPage;
 
+/*!
+ Get page view tag at a specfic location.
+ @method pageTagAtLocation:
+ @param CGPoint location
+ */
+- (NSInteger)currentPageTag;
+
 @end
