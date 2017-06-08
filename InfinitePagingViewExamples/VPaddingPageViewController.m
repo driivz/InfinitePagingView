@@ -17,7 +17,7 @@
     [super viewDidLoad];
     CGFloat naviBarHeight = self.navigationController.navigationBar.frame.size.height;
 
-    self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    self.view.backgroundColor = [UIColor darkTextColor];
 
     // pagingView
     InfinitePagingView *pagingView = [[InfinitePagingView alloc] initWithFrame:CGRectMake(self.view.center.x - 65.f, 0.f, 130.f, self.view.frame.size.height - naviBarHeight)];
@@ -28,7 +28,7 @@
     [self.view addSubview:pagingView];
     
     for (NSUInteger i = 1; i <= 15; ++i) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.JPG", i]];
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.JPG", @(i)]];
         UIImageView *page = [[UIImageView alloc] initWithImage:image];
         page.backgroundColor = [UIColor blackColor];
         page.frame = CGRectMake(0.f, 0.f, 100.f, 100.f);
@@ -39,7 +39,7 @@
     // label
     UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(pagingView.frame.origin.x - 110.f / 2, self.view.center.y - naviBarHeight - 110.f / 2, 65.f, 130.f)];
     labelName.clipsToBounds = NO;
-    labelName.textAlignment = UITextAlignmentCenter;
+    labelName.textAlignment = NSTextAlignmentCenter;
     labelName.numberOfLines = 2;
     labelName.textColor = [UIColor whiteColor];
     labelName.backgroundColor = [UIColor clearColor];
@@ -47,10 +47,7 @@
     labelName.font = [UIFont boldSystemFontOfSize:50.f];
     [self.view addSubview:labelName];
 
-    // for ios 7
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 @end

@@ -17,7 +17,7 @@
     [super viewDidLoad];
     CGFloat naviBarHeight = self.navigationController.navigationBar.frame.size.height;
 
-    self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    self.view.backgroundColor = [UIColor darkTextColor];
 
     // pagingView
     InfinitePagingView *pagingView = [[InfinitePagingView alloc] initWithFrame:CGRectMake(0.f, self.view.center.y - 100 - naviBarHeight, self.view.frame.size.width, 200.f)];
@@ -26,7 +26,7 @@
     [self.view addSubview:pagingView];
     
     for (NSUInteger i = 1; i <= 15; ++i) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.JPG", i]];
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.JPG", @(i)]];
         UIImageView *page = [[UIImageView alloc] initWithImage:image];
         page.frame = CGRectMake(0.f, 0.f, 100.f, pagingView.frame.size.height);
         page.contentMode = UIViewContentModeScaleAspectFit;
@@ -35,17 +35,14 @@
     
     // label
     UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(0.f, pagingView.frame.origin.y - 50.f, self.view.frame.size.width, 65.f)];
-    labelName.textAlignment = UITextAlignmentCenter;
+    labelName.textAlignment = NSTextAlignmentCenter;
     labelName.textColor = [UIColor whiteColor];
     labelName.backgroundColor = [UIColor clearColor];
     labelName.text = @"⇦ ⇨";
     labelName.font = [UIFont boldSystemFontOfSize:50.f];
     [self.view addSubview:labelName];
 
-    // for ios 7
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 @end

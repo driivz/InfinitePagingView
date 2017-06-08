@@ -32,7 +32,7 @@
     [self.view addSubview:pagingView];
     
     for (NSUInteger i = 1; i <= 15; ++i) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.JPG", i]];
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.JPG", @(i)]];
         UIImageView *page = [[UIImageView alloc] initWithImage:image];
         page.frame = CGRectMake(0.f, 0.f, pagingView.frame.size.width * 0.8, pagingView.frame.size.height * 0.8);
         page.contentMode = UIViewContentModeScaleAspectFit;
@@ -41,7 +41,7 @@
     
     // label
     UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 0.f, self.view.frame.size.width, 50.f)];
-    labelName.textAlignment = UITextAlignmentCenter;
+    labelName.textAlignment = NSTextAlignmentCenter;
     labelName.textColor = [UIColor whiteColor];
     labelName.backgroundColor = [UIColor clearColor];
     labelName.text = @"⇦ ⇨";
@@ -69,10 +69,7 @@
     pageControl.numberOfPages = 15;
     [self.view addSubview:pageControl];
 
-    // for ios 7
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 #pragma mark - InfinitePagingViewDelegate

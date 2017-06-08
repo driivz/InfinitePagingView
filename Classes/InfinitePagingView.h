@@ -39,21 +39,28 @@
  */
 @protocol InfinitePagingViewDelegate <NSObject>
 @optional
+
 - (void)pagingView:(InfinitePagingView *)pagingView willBeginDragging:(UIScrollView *)scrollView;
 - (void)pagingView:(InfinitePagingView *)pagingView didScroll:(UIScrollView *)scrollView;
 - (void)pagingView:(InfinitePagingView *)pagingView didEndDragging:(UIScrollView *)scrollView;
 - (void)pagingView:(InfinitePagingView *)pagingView willBeginDecelerating:(UIScrollView *)scrollView;
 - (void)pagingView:(InfinitePagingView *)pagingView didEndDecelerating:(UIScrollView *)scrollView atPageIndex:(NSInteger)pageIndex;
+
 @end
 
 /*!
  The direction of scroll.
  @typedef InfinitePagingViewScrollDirection
  */
-typedef enum {
-    InfinitePagingViewHorizonScrollDirection,
+typedef NS_ENUM(NSUInteger, InfinitePagingViewScrollDirection) {
+    InfinitePagingViewHorizonScrollDirection = 0,
     InfinitePagingViewVerticalScrollDirection,
-} InfinitePagingViewScrollDirection;
+};
+
+typedef NS_ENUM(NSInteger, InfiniteScrollDirection) {
+    InfiniteScrollDirectionBack = 1,
+    InfiniteScrollDirectionForward = -1,
+};
 
 /*!
  * @class InfinitePagingView
