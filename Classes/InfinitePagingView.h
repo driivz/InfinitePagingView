@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, InfiniteScrollDirection) {
 /*!
  @var NSInteger index of page views.
  */
-@property (nonatomic, assign) NSInteger currentPageIndex;
+@property (nonatomic, assign, readonly) NSInteger currentPageIndex;
 
 /*!
  @var InfinitePagingViewDelegate
@@ -94,6 +94,17 @@ typedef NS_ENUM(NSInteger, InfiniteScrollDirection) {
  @param UIView *pageView
  */
 - (void)addPageView:(UIView *)pageView;
+
+- (void)removeAllPages;
+
+/*!
+ Add a view object to inner scrollView view.
+ @method scrollTo:animated:
+ @param NSInteger position
+ @param BOOL animated
+ */
+
+- (void)scrollTo:(NSUInteger)pageIndex animated:(BOOL)animated;
 
 /*!
  Scroll to previous page.
@@ -113,5 +124,7 @@ typedef NS_ENUM(NSInteger, InfiniteScrollDirection) {
  @param CGPoint location
  */
 - (NSInteger)pageTagAtLocation:(CGPoint)location;
+
+- (CGPoint)locationForPageTag:(NSInteger)pageTag;
 
 @end
